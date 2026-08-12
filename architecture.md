@@ -12,4 +12,85 @@ The project include functionalities below :
 - REST APIs
 
 
+### High-Level Flow 
+```
+┌─────────────────────────────────────┐
+│          React Frontend             │
+│                                     │
+│ Pages, Forms, Buttons, UI, State    │
+└──────────────────┬──────────────────┘
+                   │
+                   │ HTTP + JSON
+                   ▼
+┌─────────────────────────────────────┐
+│       Node.js + Express Backend     │
+│                                     │
+│ Routes                              │
+│ Authentication                     │
+│ Authorization                      │
+│ Tournament Logic                   │
+│ Booking Logic                      │
+│ Payment Logic                      │
+└──────────────────┬──────────────────┘
+                   │
+                   │ Database queries
+                   ▼
+┌─────────────────────────────────────┐
+│              MongoDB                │
+│                                     │
+│ Users                               │
+│ Tournaments                         │
+│ Registrations                       │
+│ Payments                            │
+│ Notifications                       │
+│ Results                             │
+└─────────────────────────────────────┘
+
+```
+
+### Tech Stack Flow (MERN)
+```
+React
+   ↓
+User-facing application
+
+Express
+   ↓
+Web/API framework
+
+Node.js
+   ↓
+JavaScript runtime executing backend code
+
+MongoDB
+   ↓
+Persistent data storage
+```
+
+###### MEANINGS OF EACH TECH STACK
+
+**React** -> handles the user-browser interaction & sending appropriate requests to express.js. It is a Engine for developing & rendering UI , may ask for database  to actually what to develop / show in UI  
+
+**Node.js** -> the javascript runtime (where actually the javascripts run outside the broswer) 
+
+**Express.js** -> Is specifically used to handle API requests & route them to proper destinations in node.js... It is basically used to crate api-end points mostly to prevent our codebase being cumbersome
+
+**MongoDB** -> to have a persistent storgae, even when the server crashes or restarts we have to save our data somewere 
+```{ 
+  "name": "TOURNAMENT SEASON 1 ",
+  "game": "COD",
+  "entryFee": 50,
+  "maxPlayers": 50,
+  "waitingListCapacity": 5
+}
+```
+
+
+
+
+
+
+
+
+
 
