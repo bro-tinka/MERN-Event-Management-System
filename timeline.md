@@ -23,6 +23,11 @@ This Script will tell you how we actually moved step by step on each DAY
 - Separated routes from the main server.js & mounted the prefix "/api" using Express Router on another file inside /routes
 - app.use("api/", routePath) redirects any url with prefix "/api" to that router
 
+-> ADDED FRONTEND
+- setup the basic frontend using React (vite) framework 
+- vite handled automatically initial setup
+- replaced the default frontend/src/app.jsx contents with a simple working frontend application
+
 
 
 

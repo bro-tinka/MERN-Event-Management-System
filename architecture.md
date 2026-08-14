@@ -86,6 +86,53 @@ Persistent data storage
 ```
 
 
+# BACKEND COMPLETE FLOW :
+
+
+
+
+# FRONTED COMPLETE FLOW:
+>React component : it is a javascript written reusable function that returns UI. It may look like html code inside a js, but actually is javascript supporting html basic syntax .  
+Example : `App.jsx`
+
+
+
+```
+Browser loads index.html
+   ↓
+index.html loads /src/main.jsx
+   ↓
+main.jsx finds <div id="root">
+   ↓
+React renders <App />
+   ↓
+App.jsx decides what appears on screen
+```
+
+### Comunication with backend 
+the frontend & backend are separate program running on different ports & communication via HTTP.   
+The backend enables communication with the help of `CORS`
+
+```
+React sends HTTP request
+   ↓
+Express receives route
+   ↓
+Express applies logic
+   ↓
+MongoDB may be queried
+   ↓
+Express sends JSON response
+   ↓
+React updates UI
+```
+
+
+
+
+
+
+
 
 
 
