@@ -17,7 +17,11 @@ This Script will tell you how we actually moved step by step on each DAY
 ## Day 3:
 - installed nodemon (which is a dev dependency) - helps automatically restarting server when any change is made
 - installed (.dotenv) & setup .env file
- 
+- Installed `cors` [allows frontend-backend communication on different ports] ,
+- Installed `express.json()` [allows json parsing of req.body]
+- Tested POST api using Thunder Client Extension in VS CODE
+
+
 
 
 
