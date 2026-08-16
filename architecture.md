@@ -110,7 +110,7 @@ App.jsx decides what appears on screen
 ```
 
 ### Comunication with backend 
-the frontend & backend are separate program running on different ports & communication via HTTP.   
+the frontend & backend are separate program running on different ports & communicating via HTTP.   
 The backend enables communication with the help of `CORS`
 
 ```
@@ -126,6 +126,11 @@ Express sends JSON response
    ↓
 React updates UI
 ```
+
+
+
+>We have reached a more Deeper level flow on Day 4 you can check out on :
+timeline.md/Day4
 
 
 
