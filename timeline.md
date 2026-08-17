@@ -90,6 +90,17 @@ Express :5000
 React :5173
 ```
 
+#
+## Day 5: 
+- learnt about the storage architecture of MongoDB :   
+`Database` -> `Collections` -> `Documents` ->`Fields`
+- understood JSON vs BSON(Binary JSON used by MongoDB)
+- understood `_id` of documents & `ObjectId()` 
+- understood flexiblity of mongoDB document `BSON` database & necessity of schema-model in `Mongoose`
+
+
+
+
 
 
 

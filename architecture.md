@@ -128,9 +128,39 @@ React updates UI
 ```
 
 
-
 >We have reached a more Deeper level flow on Day 4 you can check out on :
 timeline.md/Day4
+
+#
+# DB Design (MongoDB)
+
+Analogy of the NoSQL Database of MongoDB with a typical Relational database is like as :
+| Relational/SQL | MongoDB |
+|---|---|
+| Database | Database |
+| Table | Collection |
+| Row | Document |
+| Column | Field |
+| Primary key | `_id` |
+| Relationship | References / embedded data |
+
+
+$$DATABASE$$
+```
+tournament_management
+│
+├── users
+├── tournaments
+├── registrations
+├── payments
+├── notifications
+└── results
+```
+
+
+
+
+
 
 
 
