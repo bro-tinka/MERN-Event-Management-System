@@ -97,6 +97,25 @@ React :5173
 - understood JSON vs BSON(Binary JSON used by MongoDB)
 - understood `_id` of documents & `ObjectId()` 
 - understood flexiblity of mongoDB document `BSON` database & necessity of schema-model in `Mongoose`
+- `MongoDB Atlas setup` Done & `connection Strings` Setup
+- Understood Atlas Architecture :   
+`Project`->`Cluster`->`Databases`->`Documents`->`Collections`
+
+MONGOOSE FUNDAMENTALS
+- Learnt the Mongoose functionality & behaviour of `Mongoose Document` (a special type of javascript object)
+- Understood the difference : `Mongoose Schema` VS `Mongoose Model` VS `Mongoose Document`
+- Understood the difference : `Model` VS `Controller`
+- Understood the difference : `Validation` VS `Authorisation`
+
+``` 
+Mongoose Schema - Template Blueprint
+Mongoose Model - JS interface built using that Schema to do CRUD operations
+Mongoose Document - The actual object of that model. It is JS object + with database Methods
+```
+- Learnt the ODM : object Data Modelling in Mongoose as a interface b/w javascript object & MongoDB Document
+- Learnt the CRUD ops via Mongoose Model : `model.create()`,` model.find()`, `model.findById()`,` model.findOne()`, `model.findByIdAndUpdate()`, `model.findByIdAndDelete() ` 
+- understood relationships using ObectId() & how to reference
+
 
 
 

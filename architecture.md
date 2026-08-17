@@ -88,7 +88,23 @@ Persistent data storage
 
 # BACKEND COMPLETE FLOW :
 
-
+```
+  ENTER             (a req from frontend/client)
+    ↓
+server.js           (the main Gateway)
+    ↓
+Express router      (routes the api calls)
+    ↓
+Mongoose Model      (has capability to directlly talk to Database)
+    ↓
+Database            (the persistent Storage)
+    ↓
+Mongoose Document   (returns/Responds back)
+    ↓
+Express             (may send the data to frontend Server Again)
+    ↓
+  Exit
+```
 
 
 # FRONTED COMPLETE FLOW:
@@ -146,8 +162,10 @@ Analogy of the NoSQL Database of MongoDB with a typical Relational database is l
 
 
 $$DATABASE$$
+Our Database is storage of Collections(Entities)
+For example, our database name is : `tournament_db` .
 ```
-tournament_management
+tournament_db
 │
 ├── users
 ├── tournaments
@@ -156,6 +174,23 @@ tournament_management
 ├── notifications
 └── results
 ```
+
+## MongoDB ATLAS (connection)
+we have used Cloud based database provided by MongoDB & setup the connection string to connect with it you can check backend/.env.example file for a typical example  
+```
+Atlas Account   (your user account on MongoDB)
+   ↓
+Project         (workspace)
+   ↓    
+Cluster         (the actual running mongoDB cloud environment)
+   ↓
+Database        (there may be many databases in that cluster)
+   ↓
+Collections     (an entity in a database)
+   ↓
+Documents       (an instance of an entity)
+```
+
 
 
 
