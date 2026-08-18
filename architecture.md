@@ -185,6 +185,82 @@ Collections     (an entity in a database)
 Documents       (an instance of an entity)
 ```
 
+## Relation between Collections 
+The created Documents from the schema of a collection are not isolated documents. They are realted to each other and they are referencig each other.  
+The following digaram shows the relationship map in the entities(collection) of our database
+
+```
+User
+ │
+ ├── creates ───────────────→ Tournament
+ │
+ ├── registers through ─────→ Registration
+ │                              │
+ │                              └── belongs to Tournament
+ │
+ ├── makes ─────────────────→ Payment
+ │                              │
+ │                              ├── belongs to Registration
+ │                              └── belongs to Tournament
+ │
+ ├── receives ──────────────→ Notification
+ │                              │
+ │                              └── may reference Tournament
+ │
+ └── receives result in ────→ Result
+                                │
+                                └── belongs to Tournament
+
+```
+
+#
+## Building Performance Indices
+We have already built some indices for uniqueness in the collection : `Result` & `Registration` to ensure the uniqueness of combinations of 2 entity.
+for example, In `Registration.js` we have already:   
+
+```javascript
+registrationSchema.index(           
+    { user: 1, tournament: 1 },
+    { unique: true }
+);
+```
+This ensures there must not be duplicate registration by the same user for a particular tournament.
+
+Now we will also build some indices for performance & faster lookups. However, this takes up additional space. Therefore, We should build these indices wisely!
+
+```javascript
+tournamentSchema.index({ creator: 1 });
+tournamentSchema.index({ status: 1 });
+tournamentSchema.index({ startTime: 1 });
+tournamentSchema.index({ game: 1, status: 1 });
+```
+
+```javascript
+resultSchema.index({ user: 1 });
+```
+
+```javascript
+registrationSchema.index({ tournament: 1, status: 1 });
+registrationSchema.index({ user: 1, status: 1 });
+registrationSchema.index({ paymentStatus: 1 });
+```
+
+```javascript
+paymentSchema.index({ user: 1 });
+paymentSchema.index({ tournament: 1 });
+paymentSchema.index({ registration: 1 }, { unique: true });
+paymentSchema.index({ status: 1 });
+paymentSchema.index({ providerOrderId: 1 });
+paymentSchema.index({ providerPaymentId: 1 });
+```
+
+```javascript
+notificationSchema.index({ user: 1, isRead: 1 });
+notificationSchema.index({ user: 1, createdAt: -1 });
+notificationSchema.index({ tournament: 1 });
+notificationSchema.index({ type: 1 });
+```
+
 
 
 

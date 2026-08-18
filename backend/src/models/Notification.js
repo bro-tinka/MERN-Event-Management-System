@@ -54,6 +54,15 @@ const notificationSchema = new mongoose.Schema({
 }
 );
 
+
+// Building Performance Indices for faster lookups for frequent queries
+notificationSchema.index({ user: 1, isRead: 1 });
+notificationSchema.index({ user: 1, createdAt: -1 });
+notificationSchema.index({ tournament: 1 });
+notificationSchema.index({ type: 1 });
+///////////////////////////////////////////////////////////////////////
+
+
 const Notification = mongoose.model("Notification", notificationSchema);
 
 module.exports = Notification;

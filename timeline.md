@@ -120,7 +120,7 @@ Mongoose Document - The actual object of that model. It is JS object + with data
 
 #
 ## Day 6:
-- understood more detailed `field definitions` in `MongooseSchema`: type, required, unique, trim, enum, default, timestamps
+- understood more detailed `field definitions` in `MongooseSchema`: type, required, unique, trim, enum, default, timestamps, uppercase, lowercase.
 - Installed Mongoose - `npm install mongoose`
 - Sucessfully connected MongoDB (Atlas)
 - Created the `user` Schema in backend/src/models/User.js
@@ -135,6 +135,10 @@ PROBLEM FACED :
 - Created the `Result` schema to build the `Leaderboard`
 > I used each entry of the leaderboard to be unique. Thats what the documents of the `Result` collection represent. This can be done by choosing each result as a unique combination of `{userId, TournamentId}`. Also `{TournamentId, RankNumber}`should be unique.
 - maintained 1 rank-per-tournament & 1 unique-user-per-tournament
+- built indexing for faster lookups & performance in mongoose schema    
+- Query indexes for tournament, registration, payment, notification, result.
+-  understood the functionality of `populate()`: populates the field, which is referencing to another document & extracts particular fields of the referenced documents which are provided in second parameter of the function.
+
 
 
 

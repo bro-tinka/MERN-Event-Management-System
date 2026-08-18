@@ -63,6 +63,11 @@ resultSchema.index(
     { unique: true }
 );
 
+// Building Performance Indices for faster lookups for frequent queries
+resultSchema.index({ user: 1 });
+///////////////////////////////////////////////////////////////////////
+
+
 const Result = mongoose.model("Result", resultSchema);
 
 module.exports = Result;

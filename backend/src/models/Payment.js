@@ -79,6 +79,16 @@ const paymentSchema = new mongoose.Schema({
 );
 
 
+// Building Performance Indices for faster lookups for frequent queries
+paymentSchema.index({ user: 1 });
+paymentSchema.index({ tournament: 1 });
+paymentSchema.index({ registration: 1 }, { unique: true });
+paymentSchema.index({ status: 1 });
+paymentSchema.index({ providerOrderId: 1 });
+paymentSchema.index({ providerPaymentId: 1 });
+///////////////////////////////////////////////////////////////////////
+
+
 const Payment = mongoose.model("Payment", paymentSchema);
 
 module.exports = Payment;

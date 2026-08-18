@@ -61,6 +61,14 @@ registrationSchema.index(           //unique combo of {user, tournament}
     { unique: true }
 );
 
+
+// Building Performance Indices for faster lookups for frequent queries
+registrationSchema.index({ tournament: 1, status: 1 });
+registrationSchema.index({ user: 1, status: 1 });
+registrationSchema.index({ paymentStatus: 1 });
+///////////////////////////////////////////////////////////////////////
+
+
 const Registration = mongoose.model("Registration", registrationSchema);
 
 module.exports = Registration;

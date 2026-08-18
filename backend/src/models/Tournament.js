@@ -70,6 +70,15 @@ const tournamentSchema = mongoose.Schema({
 
 );
 
+
+// Building Performance Indices for faster lookups for frequent queries
+tournamentSchema.index({ creator: 1 });
+tournamentSchema.index({ status: 1 });
+tournamentSchema.index({ startTime: 1 });
+tournamentSchema.index({ game: 1, status: 1 });
+/////////////////////////////////////////////////////////////////////////
+
+
 const Tournament = mongoose.model("Tournament", tournamentSchema);
 
 module.exports = Tournament;
