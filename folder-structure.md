@@ -12,6 +12,7 @@ custom-room-booking-platform/
 │   │   ├── routes/
 │   │   ├── utils/
 │   │   └── server.js
+│   │   └── scripts.js
 │   │
 │   ├── .env
 │   ├── .env.example
@@ -45,3 +46,5 @@ Again this is for my own Explanation:(what each functionality will do !)
 - **middleware/** : the overall flow from request arriving to exectuion of controller is determined by this. The high level logic or the most of the repittive code is organised here. Thing of it  as Reusable filter checks 
 
 - **utils/** : contains small reusable functions to avoid clutter in server.js 
+
+- **scripts/** : contains developer testing tools for debugging & testing.
