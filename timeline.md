@@ -123,7 +123,7 @@ Mongoose Document - The actual object of that model. It is JS object + with data
 - understood more detailed `field definitions` in `MongooseSchema`: type, required, unique, trim, enum, default, timestamps
 - Installed Mongoose - `npm install mongoose`
 - Sucessfully connected MongoDB (Atlas)
-
+- Created the `user` Schema in backend/src/models/User.js
 
 
 
