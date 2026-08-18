@@ -124,6 +124,7 @@ Mongoose Document - The actual object of that model. It is JS object + with data
 - Installed Mongoose - `npm install mongoose`
 - Sucessfully connected MongoDB (Atlas)
 - Created the `user` Schema in backend/src/models/User.js
+- Created the `tournament` Schema in backend/src/models/Tournament.js
 
 
 
