@@ -83,6 +83,8 @@ Browser UI                  (the new message from backend is shown)
 ```
 a more high level flow for now is simply 
 ```
+BASIC WORKING FRONTEND & BACKEND COMMUNICATION
+
 React :5173
     ↓ HTTP
 Express :5000

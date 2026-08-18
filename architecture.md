@@ -76,14 +76,8 @@ Persistent data storage
 **Express.js** -> Is specifically used to handle API requests & route them to proper destinations in node.js... It is basically used to crate api-end points mostly to prevent our codebase being cumbersome
 
 **MongoDB** -> to have a persistent storgae, even when the server crashes or restarts we have to save our data somewere 
-```{ 
-  "name": "TOURNAMENT SEASON 1 ",
-  "game": "COD",
-  "entryFee": 50,
-  "maxPlayers": 50,
-  "waitingListCapacity": 5
-}
-```
+
+
 
 
 # BACKEND COMPLETE FLOW :
