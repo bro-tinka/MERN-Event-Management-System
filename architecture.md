@@ -230,35 +230,53 @@ Now we will also build some indices for performance & faster lookups. However, t
 
 ```javascript
 tournamentSchema.index({ creator: 1 });
+// creator      → find tournaments created by one creator
 tournamentSchema.index({ status: 1 });
+// status       → list OPEN tournaments
 tournamentSchema.index({ startTime: 1 });
+// startTime    → sort/filter upcoming tournaments
 tournamentSchema.index({ game: 1, status: 1 });
+// game+status  → find OPEN Free Fire/PUBG tournaments
 ```
 
 ```javascript
 resultSchema.index({ user: 1 });
+// user → show one player's result history
 ```
 
 ```javascript
 registrationSchema.index({ tournament: 1, status: 1 });
+// tournament+status → count confirmed/waiting players
 registrationSchema.index({ user: 1, status: 1 });
+// user+status       → show user's active registrations
 registrationSchema.index({ paymentStatus: 1 });
+// paymentStatus     → find pending/failed registrations
 ```
 
 ```javascript
 paymentSchema.index({ user: 1 });
+// user               → list user's payments
 paymentSchema.index({ tournament: 1 });
+// tournament         → admin payment view by tournament
 paymentSchema.index({ registration: 1 }, { unique: true });
+// registration unique → one main payment record per registration
 paymentSchema.index({ status: 1 });
+// status             → find pending/failed payments
 paymentSchema.index({ providerOrderId: 1 });
+// providerOrderId    → verify provider order
 paymentSchema.index({ providerPaymentId: 1 });
+// providerPaymentId  → check provider payment record
 ```
 
 ```javascript
 notificationSchema.index({ user: 1, isRead: 1 });
+// user+isRead     → unread inbox count
 notificationSchema.index({ user: 1, createdAt: -1 });
+// user+createdAt  → latest notifications first
 notificationSchema.index({ tournament: 1 });
+// tournament      → tournament-related notifications
 notificationSchema.index({ type: 1 });
+// type            → filter notification category
 ```
 
 
