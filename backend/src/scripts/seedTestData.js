@@ -147,6 +147,7 @@ const seedTestData = async() =>{
         console.log("Player:", player.username);
         console.log("Tournament:", tournament.name);
         console.log("Registration Status:", populatedRegistration.status);
+        console.log("Registered User IGID:", populatedRegistration.user.igid);
         console.log("Registered User IGN:", populatedRegistration.user.ign);
         console.log("Tournament Game:", populatedRegistration.tournament.game);
         console.log("Payment Status:", payment.status);
