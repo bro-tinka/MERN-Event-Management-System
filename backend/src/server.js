@@ -17,13 +17,10 @@ const PORT = process.env.PORT || 5000; //fallback || to 5000
 const startServer = async () => {
     await connectDB();
 
-    app.listen(PORT, () => {
-        console.log("Started SERVERR! Server is listening on", PORT);
+    //this is the line actually starting the server
+    app.listen(PORT, ()=>{   
+        console.log('Started SERVERR! Server is listening on ', PORT);
     });
 };
 
 startServer();
-//this is the line actually starting the server
-app.listen(PORT, ()=>{   
-    console.log('Started SERVERR! Server is listening on ', PORT);
-});
