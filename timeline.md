@@ -125,6 +125,12 @@ Mongoose Document - The actual object of that model. It is JS object + with data
 - Sucessfully connected MongoDB (Atlas)
 - Created the `user` Schema in backend/src/models/User.js
 - Created the `tournament` Schema in backend/src/models/Tournament.js
+- Created the `registration` Schema in backend/src/models/Registration.js
+
+
+PROBLEM FACED : 
+>we cannot choose a unique id for example `userId` or a `tournamenId` to uniquely identify a registration. Hence we used a combined unique key made from {`userId`, `tournamentId`}. This means the user can only register for a particular tournament only once.
+
 
 
 
