@@ -138,6 +138,7 @@ PROBLEM FACED :
 - built indexing for faster lookups & performance in mongoose schema    
 - Query indexes for tournament, registration, payment, notification, result.
 -  understood the functionality of `populate()`: populates the field, which is referencing to another document & extracts particular fields of the referenced documents which are provided in second parameter of the function.
+- added `src/scripts/seetTestData.js` to test the connectivity & relationship, constraints, duplicate constraints & tested with custom Data
 
 
 
