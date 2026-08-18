@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const connectDB = require("./config/db.js");
 
 
 const app = express();  // express() returns the `app` object
@@ -14,6 +15,7 @@ app.use("/api", healthRoutes); // attaches prefix "/api" to all routes declared 
 const PORT = process.env.PORT || 5000; //fallback || to 5000
 
 
+connectDB();
 //this is the line actually starting the server
 app.listen(PORT, ()=>{   
     console.log('Started SERVERR! Server is listening on ', PORT);

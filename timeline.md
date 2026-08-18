@@ -118,7 +118,11 @@ Mongoose Document - The actual object of that model. It is JS object + with data
 - Learnt the CRUD ops via Mongoose Model : `model.create()`,` model.find()`, `model.findById()`,` model.findOne()`, `model.findByIdAndUpdate()`, `model.findByIdAndDelete() ` 
 - understood relationships using ObectId() & how to reference
 
-
+#
+## Day 6:
+- understood more detailed `field definitions` in `MongooseSchema`: type, required, unique, trim, enum, default, timestamps
+- Installed Mongoose - `npm install mongoose`
+- Sucessfully connected MongoDB (Atlas)
 
 
 
