@@ -130,6 +130,12 @@ Mongoose Document - The actual object of that model. It is JS object + with data
 
 PROBLEM FACED : 
 >we cannot choose a unique id for example `userId` or a `tournamenId` to uniquely identify a registration. Hence we used a combined unique key made from {`userId`, `tournamentId`}. This means the user can only register for a particular tournament only once.
+- Created the `Payment` schema 
+- Created the `Notification` schema 
+- Created the `Result` schema to build the `Leaderboard`
+> I used each entry of the leaderboard to be unique. Thats what the documents of the `Result` collection represent. This can be done by choosing each result as a unique combination of `{userId, TournamentId}`. Also `{TournamentId, RankNumber}`should be unique.
+- maintained 1 rank-per-tournament & 1 unique-user-per-tournament
+
 
 
 
