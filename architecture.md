@@ -279,6 +279,31 @@ notificationSchema.index({ type: 1 });
 // type            → filter notification category
 ```
 
+#
+## Auth Architecture
+```
+React                                                           FRONTEND
+ │                                                                  ▲
+ │ POST /api/auth/register                                          │
+ ▼                                                                  │
+server.js                                                     HTTP RESPONSE
+ │                                                                  ▲
+ │ app.use("/api/auth", authRoutes)                                 │                  
+ ▼                                                                  │
+authRoutes.js                                                   EXPRESS
+ │                                                                  ▲
+ │ router.post("/register", registerUser)                           │
+ ▼                                                                  │
+authController.js                                             authController
+ │                                                                  ▲
+ │ registerUser(req, res)                                           │
+ ▼                                                                  │
+eventually User model                                               │
+ │                                                                  │
+ ▼
+MongoDB ---->          RESPONSE TRAVELS  BACK  --->             to controller
+```
+
 
 
 
