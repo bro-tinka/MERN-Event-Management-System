@@ -144,7 +144,10 @@ PROBLEM FACED :
 #
 ## Day 7:
 - successfully tested the `api/auth/register` & `api/auth/login` routes using ThunderClient
--
+- installed bcrypt `npm install bcrypt`
+- unserstood the functionality of `bcrypt.hash()` and `bcrypt.compare()`
+- added full fledged functional logic of `login` and `register`.
+
 
 
 
