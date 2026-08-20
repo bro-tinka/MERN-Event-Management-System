@@ -304,7 +304,24 @@ eventually User model                                               │
 MongoDB ---->          RESPONSE TRAVELS  BACK  --->             to controller
 ```
 
-
+#### JWT Architecture
+```
+[CLIENT]                                      [SERVER]
+   |                                             |
+   | --- 1. Login (Email + Password) ----------> |
+   |                                             | (Validates credentials)
+   |                                             | Executes: jwt.sign()
+   | <--- 2. Returns JWT String ---------------- |
+   |                                             |
+   |                                             |
+   | --- 3. Request Protected Route + JWT -----> |Executes: jwt.verify()
+   |                                             | Re-calculates signature 
+   |                                             | with  JWT_SECRET
+   |                                             | 
+   | <--- 4. Returns Protected Data ------------ | (If signature matches & not expired)
+```
+`jwt.sign()`    => It signs the payload with the JWT_SECRET ; returns the JWT token String  
+`jwt.verify()`  => verifies the input token signature by passing payload with the JWT_SECRET to hashFunction 
 
 
 

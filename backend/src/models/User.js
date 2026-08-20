@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
         lowercase:true
     },
 
-    passwordHash : {
+    password : {
         type : String,
         required: true
     },
@@ -32,24 +32,16 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
 
-    firstName:{
+    name:{
         type: String,
-        trim : true
-    },
-
-    middleName:{
-        type: String,
-        trim : true
-    },
-    
-    lastName:{
-        type: String,
-        trim : true
+        trim : true,
+        required: true
     },
 
     email:{
         type: String,
         lowercase: true,
+        required: true,
         trim: true
     }
 },

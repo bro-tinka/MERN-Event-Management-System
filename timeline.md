@@ -149,6 +149,13 @@ PROBLEM FACED :
 - added full fledged functional logic of `login` and `register`.
 
 
+#
+## Day 8:
+- unserstood the architecture of jsonWebToken(JWT) : `HEADER`.`PAYLOAD`.`SIGNATURE` 
+- understood the functionality of `jwt.sign()` and `jwt.verify()`
+- implemented `generateToken.js` logic for token generation
+
+
 
 
 

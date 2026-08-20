@@ -8,52 +8,80 @@ const generateToken = require("../utils/generateToken.js");
 const registerUser = async(req,res)=>{
     try{
 
-        const {username, password, ign, igid} = req.body;
+        const {username, password, name, email, role} = req.body;
 
+        
+        // step 1: check required fields
         if(
             typeof username !== "string" ||
             typeof password !== "string" ||
-            typeof ign !== "string"      ||
-            typeof igid !== "string"     ||
+            typeof email !== "string" ||
             !username.trim()             ||
             !password                    ||
-            !ign.trim()                  ||
-            !igid.trim()                 
+            !email.trim()  ||
+            !name.trim()
         ){
             return res.status(400).json({
                 success: false,
                 message: "Invalid one or more credentials. Check Againnn..."
             });
         }
-
+        // step 2: check optional fields
+        if(username.length >12){
+            return res.status(400).json({
+                success: false,
+                message: "Username cant exceed 12 charactersss!"
+            });
+        }
+        
         if(password.length <8){
             return res.status(400).json({
                 success: false,
                 message: "Password cant be less than 8 characterssssss!"
-            })
-        }
-
-        const normalizedUsername = username.trim();
-        const normalizedIGN = ign.trim();
-        const normalizedIGID = igid.trim();
-
-        const existingUser = await User.findOne({
-            $or: [
-                {username: normalizedUsername},
-                {igid : normalizedIGID}
-            ]
-        });
-
-
-        if(existingUser){
-            return res.status(400).json({
-                success:false,
-                message: "username or the player with same IGID is already registered"
             });
         }
 
-        const passwordHash = await bcrypt.hash(password, 10);
+        const normalizedName = name.trim().length > 15 ? name.trim().substring(0,15) : name;
+        
+        if(
+            !email.endsWith("@hotmail.com") &&
+            !email.endsWith("@gmail.com") &&
+            !email.endsWith("@outlook.com") &&
+            !email.endsWith("@yahoo.com") &&
+            !email.endsWith("@zoho.com") &&
+            !email.endsWith("@icloud.com") 
+        ){
+            return res.status(400).json({
+                success: false,
+                message: "invalid Email!"
+            })
+        }
+        
+        // step 3: verify whether username already taken
+        
+        const normalizedUsername = username.trim();
+        const normalizedEmail = email.trim();
+        const normalizedName = 
+        const existingUser = await User.findOne({
+            $or: [
+                {username: normalizedUsername},
+                {email : normalizedEmail}
+            ]
+        });
+        
+        
+        if(existingUser){
+            return res.status(400).json({
+                success:false,
+                message: "username or the player with same emailID is already registered!"
+            });
+        }
 
+        // step 5: generate the password hash
+        
+        const passwordHash = await bcrypt.hash(password, 10);
+        
+        // step 4: save into the database extracted info
         const user = await User.create({
             username: normalizedUsername,
             passwordHash: passwordHash,
@@ -62,6 +90,8 @@ const registerUser = async(req,res)=>{
             igid: normalizedIGID
         });
 
+        
+        // step 5: return & set the response as Success
         return res.status(201).json({
             success: true,
             message: "User created Successfullyyyyyy",
@@ -73,10 +103,10 @@ const registerUser = async(req,res)=>{
                 igid : user.igid
             }
         });
-
+        
     }
-
-
+    
+    
     catch(error){
         
         if(error.code === 11000){
@@ -142,7 +172,7 @@ const loginUser = async(req,res) =>{
             })
         }
 
-        // step 5: if matches return jwt token
+        // step 5: if matches sign jwt token
         const token = generateToken(user._id);
 
         // step 6: return success 
