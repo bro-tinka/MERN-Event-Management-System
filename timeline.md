@@ -156,6 +156,10 @@ PROBLEM FACED :
 - implemented `generateToken.js` logic for token generation
 - update userSchema to store passwordhash instead of password & updated REGISTER logic in authController.
 - successfuly tested `register` & `login` involving bcrypt, jwt using ThunderClient.
+- added `middleware/authMiddleware.js` it handles :
+    - extracton of token from `Bearer Header`
+    - verification of token using `jwt.verify()`
+    - attaching `req.userId` to the request body and proceeding to next()
 
 
 
