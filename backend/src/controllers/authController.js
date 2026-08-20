@@ -8,25 +8,22 @@ const generateToken = require("../utils/generateToken.js");
 const registerUser = async(req,res)=>{
     try{
 
-        const {username, password, name, email, role} = req.body;
+        const {username, password, name, email, role, ign, igid} = req.body;
 
         
         // step 1: check required fields
         if(
-            typeof username !== "string" ||
-            typeof password !== "string" ||
-            typeof email !== "string" ||
-            !username.trim()             ||
-            !password                    ||
-            !email.trim()  ||
+            typeof username !== "string" || !username.trim() ||
+            typeof password !== "string" || !password ||
+            typeof email !== "string" ||    !email.trim()  ||
             !name.trim()
         ){
             return res.status(400).json({
                 success: false,
-                message: "Invalid one or more credentials. Check Againnn..."
+                message: "Invalid input required fields. Check entries Againnn..."
             });
         }
-        // step 2: check optional fields
+
         if(username.length >12){
             return res.status(400).json({
                 success: false,
@@ -37,12 +34,10 @@ const registerUser = async(req,res)=>{
         if(password.length <8){
             return res.status(400).json({
                 success: false,
-                message: "Password cant be less than 8 characterssssss!"
+                message: "Password can't be less than 8 characterssssss!"
             });
-        }
+        }  
 
-        const normalizedName = name.trim().length > 15 ? name.trim().substring(0,15) : name;
-        
         if(
             !email.endsWith("@hotmail.com") &&
             !email.endsWith("@gmail.com") &&
@@ -57,11 +52,35 @@ const registerUser = async(req,res)=>{
             })
         }
         
-        // step 3: verify whether username already taken
+        // step 2: check optional fields 
+
+        if(ign != null){
+            if(typeof ign !== "string"){
+                return res.status(400).json({
+                    success: false,
+                    message: "Invalid In-Game Name"
+                })
+            }
+        }
         
+
+        if(igid != null){
+            if(typeof igid !== "string"){
+                return res.status(400).json({
+                    success: false,
+                    message: "Invalid In-Game Id"
+                })
+            }
+        }
+
+
         const normalizedUsername = username.trim();
-        const normalizedEmail = email.trim();
-        const normalizedName = 
+        const normalizedEmail = email.trim().toLowerCase;
+        const normalizedName = name.trim().length > 15 ? name.trim().substring(0,15) : name;
+        const normalizedIGN = ign == null ? "" : ign;
+        const normalizedIGID = igid == null ? "" : igid;
+        
+        // step 3: verify whether username already taken/exist
         const existingUser = await User.findOne({
             $or: [
                 {username: normalizedUsername},
@@ -85,7 +104,9 @@ const registerUser = async(req,res)=>{
         const user = await User.create({
             username: normalizedUsername,
             passwordHash: passwordHash,
-            role : "USER",
+            role : role,
+            name : normalizedName,
+            email : normalizedEmail,
             ign : normalizedIGN,
             igid: normalizedIGID
         });
@@ -144,7 +165,7 @@ const loginUser = async(req,res) =>{
         ){
             return res.status(400).json({
                 success: false,
-                message: "Enter Username & password fields..."
+                message: "Login Fields cant be Empty..."
             });
         }
 

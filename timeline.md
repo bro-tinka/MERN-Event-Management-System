@@ -151,10 +151,11 @@ PROBLEM FACED :
 
 #
 ## Day 8:
-- unserstood the architecture of jsonWebToken(JWT) : `HEADER`.`PAYLOAD`.`SIGNATURE` 
+- understood the architecture of jsonWebToken(JWT) : `HEADER`.`PAYLOAD`.`SIGNATURE` 
 - understood the functionality of `jwt.sign()` and `jwt.verify()`
 - implemented `generateToken.js` logic for token generation
-
+- update userSchema to store passwordhash instead of password & updated REGISTER logic in authController.
+- successfuly tested `register` & `login` involving bcrypt, jwt using ThunderClient.
 
 
 
