@@ -185,7 +185,7 @@ const seedTestData = async() =>{
             console.log("Duplicate LeaderBoard rank blocked sucessfully");
         }
 
-        console.log("\n SECTION 2  DATABASE VERIFICATION ::: COMPLETED \n");
+        console.log("\n  DATABASE VERIFICATION ::: COMPLETED \n");
     }
 
 
