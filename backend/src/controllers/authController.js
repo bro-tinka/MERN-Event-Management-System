@@ -8,7 +8,7 @@ const generateToken = require("../utils/generateToken.js");
 const registerUser = async(req,res)=>{
     try{
 
-        const {username, password, name, email, role, ign, igid} = req.body;
+        const {username, password, name, email, ign, igid} = req.body;
 
         
         // step 1: check required fields
@@ -75,10 +75,10 @@ const registerUser = async(req,res)=>{
 
 
         const normalizedUsername = username.trim();
-        const normalizedEmail = email.trim().toLowerCase;
-        const normalizedName = name.trim().length > 15 ? name.trim().substring(0,15) : name;
-        const normalizedIGN = ign == null ? "" : ign;
-        const normalizedIGID = igid == null ? "" : igid;
+        const normalizedEmail = email.trim().toLowerCase();
+        const normalizedName = name.trim().length > 15 ? name.trim().substring(0,15) : name.trim();
+        const normalizedIGN = ign == null ? "" : ign.trim();
+        const normalizedIGID = igid == null ? "" : igid.trim();
         
         // step 3: verify whether username already taken/exist
         const existingUser = await User.findOne({
@@ -104,7 +104,6 @@ const registerUser = async(req,res)=>{
         const user = await User.create({
             username: normalizedUsername,
             passwordHash: passwordHash,
-            role : role,
             name : normalizedName,
             email : normalizedEmail,
             ign : normalizedIGN,

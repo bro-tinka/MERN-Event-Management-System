@@ -166,6 +166,8 @@ PROBLEM FACED :
 #
 ## Day 9:
 - attached `user` document in `req.user` instead of just `req.userId` after fetching from Database  
-
+- tested the `protected route` + common `USER` privilege.
 <img   src = "./assets/img/jwt_token_verification.png" width = 800>
 
+RBAC [Role Based Access Control]
+- handled role protection; everybody will be registered as default `role: USER`
