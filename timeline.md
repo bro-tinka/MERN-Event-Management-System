@@ -166,8 +166,22 @@ PROBLEM FACED :
 #
 ## Day 9:
 - attached `user` document in `req.user` instead of just `req.userId` after fetching from Database  
-- tested the `protected route` + common `USER` privilege.
+- tested the `protected route` + with common `USER` privilege.
 <img   src = "./assets/img/jwt_token_verification.png" width = 800>
 
 RBAC [Role Based Access Control]
 - handled role protection; everybody will be registered as default `role: USER`
+- understood `router.get("/path", fun1, fun2, fun3)`; & usage of `next()` to continue the chain and pass control to the next middleware in the sequence.
+
+- tested the `protected route` + with only `ADMIN` privilege.
+#### a) with invalid credentials (token)
+<img   src = "./assets/img/protected_route_check_invalid.png" width = 800>  
+
+#### b) with USER credentials (token)
+<img   src = "./assets/img/protected_route_check_user.png" width = 800>  
+
+#### c) with ADMIN credentials (token)
+<img   src = "./assets/img/protected_route_check_admin.png" width = 800>
+
+- ensured authentication runs before authorization 
+ 
