@@ -182,6 +182,3 @@ RBAC [Role Based Access Control]
 
 #### c) with ADMIN credentials (token)
 <img   src = "./assets/img/protected_route_check_admin.png" width = 800>
-
-- ensured authentication runs before authorization 
- 
