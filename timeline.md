@@ -163,5 +163,9 @@ PROBLEM FACED :
 
 
 
+#
+## Day 9:
+- attached `user` document in `req.user` instead of just `req.userId` after fetching from Database  
 
+<img   src = "./assets/img/jwt_token_verification.png" width = 800>
 

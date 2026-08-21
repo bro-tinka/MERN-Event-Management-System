@@ -1,6 +1,6 @@
-// Task :
-// if Valid Signature: Asssign the req.userID to the request Body & do the  next() task
-// ELSE             :  throw Auth error !
+// Task : verify token -> attach user
+// if Valid token : Asssign the req.userID to the request Body & do the  next() task
+// else           :  throw Auth error !
 
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.js");
@@ -20,7 +20,7 @@ const authenticate = async (req,res, next) =>{
 
     // step 2: split the header into schema : Bearer & token : JWT Token
     
-    const [schema, token] = authHeader.split(" ");
+    const [scheme, token] = authHeader.split(" ");
     
     if(scheme !== "Bearer" || !token){
         return res.status(401).json({
