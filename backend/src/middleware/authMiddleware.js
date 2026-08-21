@@ -3,7 +3,7 @@
 // ELSE             :  throw Auth error !
 
 const jwt = require("jsonwebtoken");
-
+const User = require("../models/User.js");
 
 
 const authenticate = async (req,res, next) =>{
@@ -33,9 +33,22 @@ const authenticate = async (req,res, next) =>{
 
     try{
         const decoded = jwt.verify(token, process.env.JWT_SECRET); // returns payload
-        req.userId = decoded.userId;                                // attach userId to req
-        next();                                                     // continue next=next task
+
+        // a) find the user 
+        const user = await User.findById(decoded.userId).select("-passwordHash");
+        
+        if(!user){
+            return res.status(401).json({
+                success: false,
+                message: "Bad request: user for this token no longer Existtt!"
+            });
+        }
+
+        // b) attach  the user to req body 
+        req.user = user;    // attach user object to req
+        next();             // continue next=next task
     }
+
 
     catch(error){
         return res.status(401).json({
