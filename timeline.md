@@ -182,3 +182,7 @@ RBAC [Role Based Access Control]
 
 #### c) with ADMIN credentials (token)
 <img   src = "./assets/img/protected_route_check_admin.png" width = 800>
+
+#
+## Day 10:
+- defined tournaments routes for CRUD operations on `Tournament.js`

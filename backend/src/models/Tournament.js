@@ -11,6 +11,7 @@ const tournamentSchema = mongoose.Schema({
     game:{
         type: String,
         required: true,
+        enum : ["Valorant", "COD","Free Fire", "BGMI"],
         trim: true
     },
 

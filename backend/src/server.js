@@ -6,11 +6,13 @@ const connectDB = require("./config/db.js");
 const app = express();  // express() returns the `app` object
 const healthRoutes = require("./routes/healthRoutes.js"); // node can handle .js notation automatically
 const authRoutes = require("./routes/authRoutes.js");
+const tournamentRoutes = require(".routes/tournamentRoutes.js");
 
 app.use(express.json()); //// This middleware automatically parses incoming JSON request bodies => allows json parsing sent from React frontend
 app.use(cors());          // allows react frontedn & node backend communication on different ports
 app.use("/api", healthRoutes); // attaches prefix "/api" to all routes declared in healthRoutes  OR ANY REQUEST MATHCING STARTING WITH /api will be handled by this javascript file
 app.use("/api/auth", authRoutes);
+app.use("/api/tournament", tournamentRoutes);
 
 
 
