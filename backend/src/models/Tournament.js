@@ -34,6 +34,7 @@ const tournamentSchema = mongoose.Schema({
     entryFee: {
         type: Number,
         required: true,
+        default : 0,
         min: 0
     },
 
