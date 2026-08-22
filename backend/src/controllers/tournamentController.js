@@ -103,8 +103,9 @@ const updateTournamentById = async (req,res)=>{
 
     try{
 
+        // step 1 : fetch the tournament by req.params.id
         const tournament = await Tournament.findById(req.params.id);
-
+        
         if(!tournament){
             return res.status(404).json({
                 success: false,
@@ -112,20 +113,30 @@ const updateTournamentById = async (req,res)=>{
             });
             
         }
-
-
+        
+        // step 2 : you are creator but don't OWN the tournament -> FORBIDDEN
+        if (req.user.role === "CREATOR" && !tournament.creator.equals(req.user._id)) {
+            return res.status(403).json({
+                success: false,
+                message: "You can only update tournaments created by you"
+            });
+        }
+        
+        // step 3 : define allowed updates -> PATCH updates  & SAVE
+        
         const allowedUpdates = ["name", "game", "description", "startTime", "entryFee", "status"];
-
+        
         allowedUpdates.forEach( field =>{
-
+            
             if(req.body[field] != null){
                 tournament[field] = req.body[field];
             }
-
+            
         });
+        
 
         await tournament.save();
-
+        
         return res.status(200).json({
             success: true,
             message: "Tournament Updated Successfullyy",
@@ -142,11 +153,11 @@ const updateTournamentById = async (req,res)=>{
         });
         
     }
-
+    
     catch(error){
-
+        
         console.log("UPDATE TOURNA ERR: ", error);
-
+        
         return res.status(500).json({
             success: false,
             message: "Unable to update tournament"
@@ -157,27 +168,36 @@ const updateTournamentById = async (req,res)=>{
 
 
 const deleteTournament = async (req, res) => {
-
+    
     try {
-
+        
+        // step 1 : fetch the tournament by req.params.id
         const tournament = await Tournament.findById(req.params.id);
-
+        
         if (!tournament) {
             return res.status(404).json({
                 success: false,
                 message: "Tournament not found"
             });
         }
-
-
+        // step 2 : you are creator but don't OWN the tournament -> FORBIDDEN
+        
+        if (req.user.role === "CREATOR" &&  !tournament.creator.equals(req.user._id) ) {
+            return res.status(403).json({
+                success: false,
+                message: "You can only update tournaments created by you"
+            });
+        }
+        
+        // step 3 : delete Tournament
         await tournament.deleteOne();
-
-
+        
+        
         return res.status(200).json({
             success: true,
             message: "Tournament deleted successfully"
         });
-
+        
     }
 
     catch (error) {

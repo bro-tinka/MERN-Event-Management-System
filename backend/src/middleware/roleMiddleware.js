@@ -1,5 +1,5 @@
-// Task: returns a middleware function : isAuthorised(givenRole, allowedRoles)
-// returns a function : which checks the req.user.role is authorised or not?
+// Task: only allowe allowedRoles to pass through this to -> next()
+// returns a middleware function : isAuthorised(givenRole, allowedRoles) which checks the req.user.role is authorised or not?
 
 
 const authorizeRoles = (...allowedRoles) => {  // the parameters are automically converted to an array
