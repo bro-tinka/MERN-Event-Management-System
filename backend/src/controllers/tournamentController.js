@@ -101,10 +101,95 @@ const createTournament = async (req,res)=>{
 
 const updateTournamentById = async (req,res)=>{
 
-}
+    try{
 
-const deleteTournament = async (req,res)=>{
+        const tournament = await Tournament.findById(req.params.id);
 
-}
+        if(!tournament){
+            return res.status(404).json({
+                success: false,
+                message: "Tournament Not Existt"
+            });
+            
+        }
+
+
+        const allowedUpdates = ["name", "game", "description", "startTime", "entryFee", "status"];
+
+        allowedUpdates.forEach( field =>{
+
+            if(req.body[field] != null){
+                tournament[field] = req.body[field];
+            }
+
+        });
+
+        await tournament.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Tournament Updated Successfullyy",
+            tournament : {
+                id: tournament._id,
+                name: tournament.name,
+                game: tournament.game,
+                description: tournament.description,
+                creator: tournament.creator,
+                startTime: tournament.startTime,
+                entryFee: tournament.entryFee,
+                status: tournament.status
+            }
+        });
+        
+    }
+
+    catch(error){
+
+        console.log("UPDATE TOURNA ERR: ", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Unable to update tournament"
+        });
+        
+    }
+};
+
+
+const deleteTournament = async (req, res) => {
+
+    try {
+
+        const tournament = await Tournament.findById(req.params.id);
+
+        if (!tournament) {
+            return res.status(404).json({
+                success: false,
+                message: "Tournament not found"
+            });
+        }
+
+
+        await tournament.deleteOne();
+
+
+        return res.status(200).json({
+            success: true,
+            message: "Tournament deleted successfully"
+        });
+
+    }
+
+    catch (error) {
+
+        console.log("DELETE TOURNAMENT ERROR:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Unable to delete tournament"
+        });
+
+    }
+};
 
 module.exports = {getAllTournament, getTournamentById, createTournament, updateTournamentById, deleteTournament};
