@@ -187,3 +187,5 @@ RBAC [Role Based Access Control]
 ## Day 10:
 - defined tournaments routes for CRUD operations on `Tournament.js`
 - successfully tested the tournament creation route via ThunderClient
+- implemented CRUD functions : `getAllTournaments()`, `getAllTournament`, `getTournamentById`, `createTournament`, `updateTournamentById`, `deleteTournament` in `tournamentController.js`
+- 
